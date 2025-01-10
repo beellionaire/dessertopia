@@ -1,4 +1,4 @@
-import Navbar from "../../navbar";
+import Navbar from "../../../components/fragments/navbar";
 
 export default function ProfilePage() {
   return (

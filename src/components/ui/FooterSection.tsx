@@ -1,23 +1,18 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
+
+import { FaInstagram, FaFacebookF, FaTiktok, FaGlobe } from "react-icons/fa";
+import { SiShopee } from "react-icons/si";
 
 const Footer = () => {
   return (
-    <footer className="bg-black pt-24">
+    <footer className="bg-[#3C2A21] px-24 pt-24 ">
       <div className="container mx-auto pb-24">
         <div className="text-white grid grid-cols-1 lg:grid-cols-4 gap-x-8 gap-y-12">
           {/* info */}
           <div className="flex flex-col gap-4">
-            <Link href="#">
-              <Image
-                src={"/assets/img/logo.png"}
-                alt=""
-                width={117}
-                height={55}
-              />
-            </Link>
+            <div className="text-xl">DESSERTOPIA</div>
 
             <ul className="flex flex-col gap-4 mt-5">
               <li className="flex items-center gap-4">
@@ -28,7 +23,7 @@ const Footer = () => {
               </li>
               <li>
                 <Link href="#" className="flex items-center gap-4">
-                  <span>apalah@gmail.com</span>
+                  <span>dessertopia@gmail.com</span>
                 </Link>
               </li>
             </ul>
@@ -117,37 +112,47 @@ const Footer = () => {
       <div className="text-white border-t border-white/30 py-12">
         <div className="container mx-auto h-full">
           <div className="flex items-center justify-between h-full">
-            <span>&copy; Copyright 2024 Apalah All Rights Reserved</span>
+            <span>&copy; Copyright 2024 Dessertopia All Rights Reserved</span>
             <ul className="flex gap-4 text-xl">
               <li>
                 <Link
                   href="#"
                   className="text-white hover:text-accent transition-all"
-                ></Link>
+                >
+                  <FaInstagram />
+                </Link>
               </li>
               <li>
                 <Link
                   href="#"
                   className="text-white hover:text-accent transition-all"
-                ></Link>
+                >
+                  <FaFacebookF />
+                </Link>
               </li>
               <li>
                 <Link
                   href="#"
                   className="text-white hover:text-accent transition-all"
-                ></Link>
+                >
+                  <SiShopee />
+                </Link>
               </li>
               <li>
                 <Link
                   href="#"
                   className="text-white hover:text-accent transition-all"
-                ></Link>
+                >
+                  <FaTiktok />
+                </Link>
               </li>
               <li>
                 <Link
                   href="#"
                   className="text-white hover:text-accent transition-all"
-                ></Link>
+                >
+                  <FaGlobe />
+                </Link>
               </li>
             </ul>
           </div>

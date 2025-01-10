@@ -10,7 +10,7 @@ import { Autoplay, Pagination } from "swiper/modules";
 
 export default function HeroSection() {
   return (
-    <div className="p-6 w-full">
+    <div className="p-6 w-full mt-24">
       <Swiper
         modules={[Pagination, Autoplay]}
         spaceBetween={10}
@@ -21,36 +21,22 @@ export default function HeroSection() {
       >
         {/* Slide 1 */}
         <SwiperSlide>
-          <div className="relative w-full h-64 bg-gray-100">
+          <div className="relative w-full h-[300px] bg-gray-100">
+            <Image
+              src="/image/banner/2.png"
+              alt="Promo Banner 1"
+              objectFit="cover"
+              layout="fill"
+            />
+          </div>
+        </SwiperSlide>
+        <SwiperSlide>
+          <div className="relative w-full h-[300px] bg-gray-100">
             <Image
               src="/image/banner/1.png"
               alt="Promo Banner 1"
-              layout="fill"
               objectFit="cover"
-            />
-          </div>
-        </SwiperSlide>
-
-        {/* Slide 2 */}
-        <SwiperSlide>
-          <div className="relative w-full h-64 bg-gray-100">
-            <Image
-              src="/image/banner/1.png"
-              alt="Promo Banner 2"
               layout="fill"
-              objectFit="cover"
-            />
-          </div>
-        </SwiperSlide>
-
-        {/* Slide 3 */}
-        <SwiperSlide>
-          <div className="relative w-full h-64 bg-gray-100">
-            <Image
-              src="/image/banner/1.png"
-              alt="Promo Banner 3"
-              layout="fill"
-              objectFit="cover"
             />
           </div>
         </SwiperSlide>

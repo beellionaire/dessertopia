@@ -1,11 +1,13 @@
-import { register } from "@/lib/firebase/services";
-import { NextResponse, NextRequest } from "next/server";
+import { NextResponse } from "next/server";
 
-export async function POST(request: NextRequest) {
-  const req = await request.json();
-  const res = await register(req);
-  return NextResponse.json(
-    { status: res.status, message: res.message },
-    { status: res.statusCode }
-  );
+export async function POST(req: any) {
+  try {
+    const { name, email, password } = await req.json();
+    console.log(name);
+    console.log(email);
+    console.log(password);
+    return NextResponse.json({ message: "Success" }, { status: 201 });
+  } catch (error) {
+    return NextResponse.json({ message: "Error" }, { status: 500 });
+  }
 }

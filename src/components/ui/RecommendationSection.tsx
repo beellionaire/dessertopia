@@ -1,99 +1,62 @@
-import { link } from "fs";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
+interface Product {
+  _id: string;
+  productName: string;
+  productDescription: string;
+  productPrice: number;
+  productPhoto: string;
+}
+
 export default function RecommendationSection() {
-  const products = [
-    {
-      image: "/image/products/1.png",
-      title: "[PROMO] Cheesecake Biscoff",
-      price: "Rp299.000",
-      link: "#",
-    },
-    {
-      image: "/image/products/1.png",
-      title: "Molten Lava Cakel",
-      price: "Rp5.990",
-      link: "#",
-    },
-    {
-      image: "/image/products/1.png",
-      title: "Thai Rolled Ice Cream",
-      price: "Rp4.870",
-      link: "#",
-    },
-    {
-      image: "/image/products/1.png",
-      title: "Mango Sticky Rice Parfait",
-      price: "Rp7.999",
-      link: "#",
-    },
-    {
-      image: "/image/products/1.png",
-      title: "Raw Matcha Cheesecake",
-      price: "Rp19.500",
-      link: "#",
-    },
-    {
-      image: "/image/products/1.png",
-      title: "Dark Chocolate Avocado Mousse",
-      price: "Rp3.699",
-      link: "#",
-    },
-    {
-      image: "/image/products/1.png",
-      title: "Dalgona Bingsu",
-      price: "Rp117.900",
-      link: "#",
-    },
-    {
-      image: "/image/products/1.png",
-      title: "Banoffee Pie Cup",
-      price: "Rp35.499",
-      link: "#",
-    },
-    {
-      image: "/image/products/1.png",
-      title: "Caramel Custard",
-      price: "Rp29.300",
-      link: "#",
-    },
-    {
-      image: "/image/products/1.png",
-      title: "Matcha Panna Cotta",
-      price: "Rp169.900",
-      link: "#",
-    },
-  ];
+  const [products, setProducts] = useState<Product[]>([]); // Tentukan tipe state
+
+  useEffect(() => {
+    // Fetch data from the API
+    const fetchProducts = async () => {
+      try {
+        const response = await fetch("/api/products");
+        const data: Product[] = await response.json(); // Tentukan tipe data hasil fetch
+        setProducts(data);
+      } catch (error) {
+        console.error("Failed to fetch products:", error);
+      }
+    };
+
+    fetchProducts();
+  }, []);
 
   return (
     <section className="p-6">
-      <h2 className="text-lg font-bold mb-4 text-center text-red-500">
-        Rekomendasi Produk
+      <h2 className="text-2xl font-bold mb-4 text-center text-red-500">
+        BEST SELLER
       </h2>
       <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
-        {products.map((product, index) => (
+        {products.map((product) => (
           <Link
-            href={product.link}
-            key={index}
-            className="border rounded-lg overflow-hidden shadow-sm bg-white hover:shadow-md
-            transition-all duration-300"
+            href={`/product/detail/${product._id}`} // Redirect to product detail page
+            key={product._id}
+            className="border rounded-lg overflow-hidden shadow-sm bg-white hover:shadow-md transition-all duration-300"
           >
             <div className="relative w-full h-64 bg-gray-100">
               <Image
-                src={product.image}
-                alt={product.title}
-                width={100}
-                height={100}
+                src={product.productPhoto[0]} // Use image URL from MongoDB
+                alt={product.productName}
+                objectFit="cover"
+                layout="fill"
                 className="object-cover w-full h-full"
               />
             </div>
 
             <div className="p-4">
               <h3 className="text-sm font-medium line-clamp-2">
-                {product.title}
+                {product.productName}
               </h3>
-              <p className="mt-2 text-red-500 font-bold">{product.price}</p>
+              <div className="text-lg font-bold text-red-500 mb-2">
+                Rp{product.productPrice.toLocaleString("id-ID")}
+              </div>
             </div>
           </Link>
         ))}
