@@ -2,7 +2,6 @@ import WhatsAppButton from "@/components/fragments/whatsappButton";
 import { getData } from "@/services/products";
 import Image from "next/image";
 
-import { FaWhatsapp } from "react-icons/fa";
 
 type Product = {
   _id: string;
