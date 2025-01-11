@@ -24,7 +24,7 @@ export default async function DetailProductPage({
   try {
     // Ambil data produk berdasarkan ID
     const product: Product | null = await getData(
-      `https://dessertopia.vercel.app/api/products/?id=${params.id}`
+      `${process.env.NEXT_PUBLIC_API_URL}/api/products/?id=${params.id}`
     );
 
     // Jika produk tidak ditemukan
@@ -64,7 +64,7 @@ export default async function DetailProductPage({
             </div>
 
             <div className="flex items-center gap-4 mb-6">
-              <div className="flex items-center border border-gray-300 rounded-md">
+              {/* <div className="flex items-center border border-gray-300 rounded-md">
                 <button className="px-3 py-2 text-gray-600 hover:bg-gray-100">
                   -
                 </button>
@@ -76,7 +76,7 @@ export default async function DetailProductPage({
                 <button className="px-3 py-2 text-gray-600 hover:bg-gray-100">
                   +
                 </button>
-              </div>
+              </div> */}
             </div>
             <div className="flex gap-2">
               {/* <button className="w-full bg-orange-500 text-white py-2 rounded-lg hover:bg-orange-600 transition " onClick={handleWhatsAppClick}>
