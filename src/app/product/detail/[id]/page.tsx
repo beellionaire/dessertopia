@@ -23,7 +23,7 @@ export default async function DetailProductPage({
   try {
     // Ambil data produk berdasarkan ID
     const product: Product | null = await getData(
-      `https://dessertopia.vercel.app/api/products/?id=${params.id}`
+      `https://dessertopia.vercel.app/api/products/detail/?id=${params.id}`
     );
 
     // Jika produk tidak ditemukan
