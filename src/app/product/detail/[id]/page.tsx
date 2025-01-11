@@ -2,6 +2,7 @@ import WhatsAppButton from "@/components/fragments/whatsappButton";
 import { getData } from "@/services/products";
 import Image from "next/image";
 
+import { FaWhatsapp } from "react-icons/fa";
 
 type Product = {
   _id: string;
@@ -23,7 +24,7 @@ export default async function DetailProductPage({
   try {
     // Ambil data produk berdasarkan ID
     const product: Product | null = await getData(
-      `https://dessertopia.vercel.app/api/products/detail/?id=${params.id}`
+      `https://dessertopia.vercel.app/api/products/?id=${params.id}`
     );
 
     // Jika produk tidak ditemukan
