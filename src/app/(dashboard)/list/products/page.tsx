@@ -62,7 +62,7 @@ const ProductListPage = () => {
         />
         <div>
           <h3 className="font-semibold">{item.productName}</h3>
-          <p className="text-sm text-gray-500">{item.productDescription}</p>
+          {/* <p className="text-sm text-gray-500 ">{item.productDescription}</p> */}
         </div>
       </td>
       <td className="hidden md:table-cell text-center">{item._id}</td>
